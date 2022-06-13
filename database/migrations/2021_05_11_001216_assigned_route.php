@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('route_id')->constrained();
             $table->foreignId('bus_id')->constrained();
+            $table->timestamp('trip_date');
             $table->timestamps();
         });
     }

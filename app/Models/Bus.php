@@ -13,6 +13,7 @@ class Bus extends Model
         'plate_number',
         'class_id',
         'insurance_number',
+         'company_id',
         'bus_image',
         'total_seats',
         'depature_time',

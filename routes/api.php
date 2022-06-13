@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusController;
-use App\Http\Controllers\HasClassController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BusClassController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\BookingController;
+
+use Illuminate\Http\Request;
 
 
 /*
@@ -31,9 +31,9 @@ Route::post('/register',[AuthController::class,'register']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('/logout',[AuthController::class,'logout']);
     Route::get('/user',[AuthController::class,'user']);
-        //for bus class 
+        //for bus class
         Route::resource('bus_class',BusClassController::class);
-     
+
        //For Company
         Route::resource('company',CompanyController::class);
         //for bus driver

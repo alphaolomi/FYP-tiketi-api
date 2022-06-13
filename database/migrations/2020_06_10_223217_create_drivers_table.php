@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('nida_number');
-            $table->string('drive_licence');
+            $table->string('driver_licence');
             $table->foreignId('company_id')->constrained();
             $table->timestamps();
         });
