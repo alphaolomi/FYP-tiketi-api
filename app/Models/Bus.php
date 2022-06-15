@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Route;
+use App\Models\BusClass;
+use App\Models\Driver;
 
 class Bus extends Model
 {
@@ -18,4 +21,19 @@ class Bus extends Model
         'depature_time',
         'driver_id'
     ];
+
+    public function routes()
+    {
+        return $this->belongsToMany(Route::class);
+    }
+
+    public function busClass()
+    {
+        return $this->belongsTo(BusClass::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

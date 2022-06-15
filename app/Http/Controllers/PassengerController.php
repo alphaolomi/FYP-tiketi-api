@@ -35,7 +35,33 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //save passenger details
+        // $passenger = new  Passenger();
+        // $passenger ->firstName= $request->firstName;
+        // $passenger ->lastName= $request->lastName;
+        // $passenger ->phoneNumber= $request->phoneNumber;
+        // $passenger ->email= $request->email;
+
+        $attrs = $request-> validate(
+            [
+                'firstName' => 'required|string',
+                'lastName' => 'required|string',
+                'phoneNumber' => 'required|string',
+                'email' => 'required|email'
+            ]
+        );
+        $passenger = Passenger::create([
+            'user_id' => auth()->user()->id,
+            'firstName' =>$attrs['firstName'],
+            'lastName' =>$attrs['lastName'],
+            'phoneNumber' =>$attrs['phoneNumber'],
+            'email' =>$attrs['email'],
+        ]);
+        return response([
+            'message' => $attrs['firstName'].' '.'Created',
+            'passenger' => $passenger,
+        ], 200);
+
     }
 
     /**

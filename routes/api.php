@@ -11,6 +11,7 @@ use App\Http\Controllers\BusClassController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PassengerController;
 
 
 /*
@@ -25,27 +26,39 @@ use App\Http\Controllers\BookingController;
 */
 
 /*public routes*/
+Route::get('search',[BookingController::class, 'searchBus'])->name('search');
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
+
 //protected routes
-Route::group(['middleware'=>['auth:sanctum']],function(){
+Route::group(['middleware'=>['auth:sanctum']],function()
+{
     Route::post('/logout',[AuthController::class,'logout']);
-    Route::get('/user',[AuthController::class,'user']);
-        //for bus class 
-        Route::resource('bus_class',BusClassController::class);
-     
-       //For Company
-        Route::resource('company',CompanyController::class);
-        //for bus driver
-        Route::resource('driver',DriverController::class);
-        //for route
-        Route::resource('route',RouteController::class);
-        //For Bus
-        Route::resource('buses',BusController::class);
-         //For Booking
-         Route::resource('booking',BookingController::class);
+
+
+    Route::post('/passenger',[PassengerController::class,'store']);
+
        //For assigne route
-       Route::resource('assignedRoute',AssignedRouteController::class);
+    Route::resource('assignedRoute',AssignedRouteController::class);
        //For assigne route
-       Route::get('/trip/search/{name}',[AssignedRouteController::class,'search']);
+    Route::get('/trip/search/{name}',[AssignedRouteController::class,'search']);
 });
+
+Route::prefix('admin')->group(
+    function()
+    {
+    Route::get('/user',[AuthController::class,'user']);
+        //for bus class
+    Route::resource('bus_class',BusClassController::class);
+       //For Company
+    Route::resource('company',CompanyController::class);
+        //for bus driver
+    Route::resource('driver',DriverController::class);
+        //for route
+    Route::resource('route',RouteController::class);
+        //For Bus
+    Route::resource('buses',BusController::class);
+    }
+);
+
+

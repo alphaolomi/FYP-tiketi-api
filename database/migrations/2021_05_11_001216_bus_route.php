@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assign_routes', function (Blueprint $table) {
+        Schema::create('bus_route', function (Blueprint $table) {
             $table->id();
             $table->foreignId('route_id')->constrained();
             $table->foreignId('bus_id')->constrained();
+            $table->timestamp('trip_date');
             $table->timestamps();
         });
     }
@@ -26,9 +27,9 @@ return new class extends Migration
      *
      * @return void
      */
-     
+
     public function down()
     {
-        Schema::dropIfExists('assign_routes');
+        Schema::dropIfExists('bus_route');
     }
 };

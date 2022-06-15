@@ -14,4 +14,15 @@ class Booking extends Model
         'buses_class_id'
 
     ];
+
+    public function passenger()
+    {
+        return $this->belongsTo(Passenger::class);
+    }
+
+    public function busClass()
+    {
+        return $this->belongsTo(BusClass::class);
+    }
+
 }

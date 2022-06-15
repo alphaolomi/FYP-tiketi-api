@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
+           // $table->foreignId('user_id')->constrained()->nullable();
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('phoneNumber');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -4,14 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bus;
 
 class Route extends Model
 {
     use HasFactory;
     protected $fillable = [
         'via',
-        'from',
+        'region_from',
         'destination',
-        'price'    
+        'trip_date',
+        'price'
     ];
+
+    public function buses()
+    {
+        return $this->belongsToMany(Bus::class);
+    }
 }

@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
+            $table->string('via');
+            $table->string('region_from');
+            $table->string('destination');
+            $table->float('price');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

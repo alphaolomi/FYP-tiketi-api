@@ -10,6 +10,8 @@ class BusClass extends Model
     use HasFactory;
     protected $fillable =[
         'class_name',
-       
+
     ];
+
+    protected $table = 'buses_classes';
 }

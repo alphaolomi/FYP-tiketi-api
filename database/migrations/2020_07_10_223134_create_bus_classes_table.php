@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('class_name');
             $table->string('seat_number');
-            $table->float('bus_fare');
             $table->timestamps();
         });
     }
