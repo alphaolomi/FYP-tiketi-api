@@ -9,7 +9,8 @@ use App\Models\User;
 class AuthController extends Controller
 {
     //register
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $attrs = $request->validate(
             [
                 'username' => 'required|string',
@@ -19,7 +20,9 @@ class AuthController extends Controller
         );
         //create user
         $user = User::create([
+
         'username' =>$attrs['username'],
+
         'email' =>$attrs['email'],
         'password' =>bcrypt($attrs['password']),
 
@@ -41,7 +44,8 @@ class AuthController extends Controller
             ]
         );
         //attemp login
-        if(!Auth::attempt($attrs)){
+        if(!Auth::attempt($attrs))
+        {
           return response([
               'message' => 'Invalid Credentials.',
           ], 403);

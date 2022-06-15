@@ -22,8 +22,10 @@ return new class extends Migration
             $table->string('bus_image');
             $table->integer('total_seats');
             $table->timestamp('depature_time')->nullable();
+
             $table->foreignId('driver_id')->constrained();
             $table->foreignId('company_id')->constrained();
+
             $table->timestamps();
         });
     }

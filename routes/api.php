@@ -1,17 +1,17 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusController;
-use App\Http\Controllers\HasClassController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BusClassController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PassengerController;
+
+use Illuminate\Http\Request;
 
 
 /*
@@ -36,7 +36,9 @@ Route::group(['middleware'=>['auth:sanctum']],function()
     Route::post('/logout',[AuthController::class,'logout']);
 
 
+
     Route::post('/passenger',[PassengerController::class,'store']);
+
 
        //For assigne route
     Route::resource('assignedRoute',AssignedRouteController::class);
