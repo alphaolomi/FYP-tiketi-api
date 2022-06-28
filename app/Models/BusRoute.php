@@ -9,4 +9,11 @@ class BusRoute extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'trip_date',
+        'route_id',
+        'bus_id'
+
+    ];
+
 }

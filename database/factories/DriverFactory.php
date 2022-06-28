@@ -25,7 +25,7 @@ class DriverFactory extends Factory
             },
             'nida_number' => $this->faker->numberBetween(199938847688377456389, 199938847688377456389 ),
 
-            'drive_licence' => $this->faker->numberBetween(6788, 74584845),
+            'driver_licence' => $this->faker->numberBetween(6788, 74584845),
 
             'company_id' => function()
             {

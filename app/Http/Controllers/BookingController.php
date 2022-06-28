@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Passenger;
+use Illuminate\Support\Facades\DB;
 use App\Models\Bus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PassengerController;
@@ -41,16 +42,13 @@ class BookingController extends Controller
 
         // $date = $request->trip_date;
 
-        // $query = Bus::with('routes', )->with(['products' => function($query) use ($searchString){
-        //     $query->where('name', 'like', '%'.$searchString.'%');
-        // }])->get();;
+
 
         $results = Bus::with(['routes' => function($query) use ($region_from, $destination)
                                 {
                                     $query->where('region_from', 'LIKE', '%'.$region_from.'%');
                                     $query->where('destination', 'LIKE', '%'.$destination.'%');
-                                }])->get()[0]->routes;
-
+                                }])->get();
 
 
             return response()->json([
